@@ -1,8 +1,9 @@
 from django.db import models
 
 class Salario(models.Model):
-    valor_cobrar_año = models.DecimalField(max_digits=10, decimal_places=2)
-    pago_extra_diciembre = models.DecimalField(max_digits=10, decimal_places=2)
+    amount = models.CharField(max_length=10, null=False)
+    extra_dec = models.BooleanField(default=False)
+    extra_jun = models.BooleanField(default=False)
 
 class Puesto(models.Model):
     puesto_trabajo = models.CharField(max_length=100)

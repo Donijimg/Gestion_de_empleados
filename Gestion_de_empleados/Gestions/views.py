@@ -1,56 +1,80 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Pais,Salario,Puesto,Poblacion,Fabrica,Empleado
+from .models import Salario,Empleado,Fabrica,Pais,Poblacion,Puesto
+# Create your views here.
+def index(request):
+  return render(request, 'index.html', {})
 
-def create(request,valor_cobrar_año):
-  pais = Pais(nombre="Colombia")
-  salario = Salario(valor_cobrar_año=2025,pago_extra_diciembre=100000)
-  puesto = Puesto(puesto_trabajo="Oficina -d",nombre_cargo=)
-  poblacion = Poblacion()
-  fabrica = Fabrica()
-  empleado=Empleado()
-  pais.save()
+def salario(request):
+
+  return render(request, "salario.html", {})
+
+def guardado(request):
+  amount = request.GET['amount']
+  salario = Salario(amount = amount)
   salario.save()
+  return HttpResponse("Hola")
+
+def puesto(request):
+  salario=Salario.objects.all()
+  return render (request, 'puesto.html',{
+    'salario' : salario
+  })
+
+def guardarpuesto(request):
+  if request.method != 'POST':
+    return HttpResponse("Metodo no soportado")
+  nombre= request.POST['nombre']
+  descripcion= request.POST['descripcion']
+  salario = Salario.objects.get(id=request.POST['salario'])
+  puesto= Puesto (nombre=nombre, descripcion=descripcion, salario=salario)
   puesto.save()
-  poblacion.save()
-  fabrica.save()
-  empleado.save()
-  return HttpResponse ("datos creados")
+  return HttpResponse("puesto de trabajo creado")
 
 
-  # restaurante=Restaurant.objects.get(place_id=8)
-  # print(restaurante.place.addres)
-  # return HttpResponse (restaurante.place.addres)
 
-# def listado(request):
-#   places = Place.objects.all()
-#   restaurants=Restaurant.objects.all()
-#   for obj in places:
-#     print(obj.name)
-#   for obj in restaurants:
-#     print(obj.place)
-#   return HttpResponse ("lista de places")
 
-# def storage(addres,name,id):
-#   places = Place(name=name, addres=addres)
-#   restaurants= Restaurant(id=id)
-#   restaurants.save()
-#   places.save()
-#   return HttpResponse ("guardamos los datos")
+def listarpuestos(request,puesto_trabajo):
+  cargo = Puesto.objects.get(puesto_trabajo)
+  for obj in cargo:
+    print(obj.puesto_trabajo)
+  return HttpResponse ("lista de places")
+
+
+
+
+
+
+
+
+
+
+
+
+def storage(title, id):
+  # publication = Publication(title=title)
+  # article= Article(id=id)
+  # publication.save()
+  # article.save()
+  return HttpResponse ("guardamos los datos")
   
-# def consultar(requets,id):
-#   places= Place.objects.get(id=id)
-#   restaurants=Restaurant.objects.all()
-#   return HttpResponse (f"nombre: {places.name}, addres:{places.addres}, restaurant: {restaurants}")
+def consultar(requets,id):
+  # publication= Publication.objects.get(id=id)
+  # article=Article.objects.all()
+  return HttpResponse (f"nombre: {publication.title}, restaurant: {article}")
 
 
-# def modificar(request, name,id):
-#   places=Place.objects.get(id=id)
-#   places.name=name
-#   places.save()
-#   return HttpResponse("post actualizado")
+def modificar(request, title,id):
+  # publication=Publication.objects.get(id=id)
+  # publication.title=title
+  # publication.save()
+  return HttpResponse("post actualizado")
 
-# def eliminar(request,id):
-#   places=Place.objects.get(id=id)
-#   places.delete()
-#   return HttpResponse("post eliminado")
+def eliminar(request,id):
+  # publication=Publication.objects.get(id=id)
+  # publication.delete()
+  return HttpResponse("post eliminado")
+
+
+  
+  
