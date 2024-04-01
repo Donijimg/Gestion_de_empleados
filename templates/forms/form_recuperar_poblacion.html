@@ -1,0 +1,13 @@
+<section class="seccion_formulario">
+  <article class="card">
+    <form action="{% url 'recuperar_poblacion' %}" method="get">
+      <div class="control">
+        <label for="id">ID de la población</label>
+        <input type="text" id="id" name="id" required>
+      </div>
+      <div>
+        <button type="submit">Recuperar</button>
+      </div>
+    </form>
+  </article>
+</section>

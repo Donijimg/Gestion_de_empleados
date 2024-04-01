@@ -1,0 +1,54 @@
+<section class="seccion_formulario">
+  <article class="card">
+    <form action="{% url 'listar_empleados' %}" method="get">
+      <div class="form-group">
+        <label for="nombre_empleado">Nombre empleado</label>
+        <input type="text" class="form-control" id="nombre_empleado" name="nombre_empleado" required>
+      </div>
+      <div class="form-group">
+        <label for="documento">Documento</label>
+        <input type="text" class="form-control" id="documento" name="documento" required>
+      </div>
+      <div class="form-group">
+        <label for="nombre_puesto">Puesto</label>
+        <select class="form-control" id="nombre_puesto" name="nombre_puesto">
+          {% for puesto in puestos %}
+          <option value="{{ puesto.id }}">{{ puesto.nombre_puesto }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="nombre_fabrica">Fábrica</label>
+        <select class="form-control" id="nombre_fabrica" name="nombre_fabrica">
+          {% for fabrica in fabricas %}
+          <option value="{{ fabrica.id }}">{{ fabrica.nombre_fabrica }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit">Buscar</button>
+    </form>
+  </article>
+</section>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Documento</th>
+      <th>Correo Electrónico</th>
+      <th>Puesto</th>
+      <th>Fábrica</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for empleado in empleados %}
+    <tr>
+      <td>ID: {{ empleado.id }}</td>
+      <td>{{ empleado.nombre_empleado }}</td>
+      <td>{{ empleado.documento }}</td>
+      <td>{{ empleado.correo_electronico }}</td>
+      <td>{{ empleado.puesto.nombre_puesto }}</td>
+      <td>{{ empleado.fabrica.nombre_fabrica }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

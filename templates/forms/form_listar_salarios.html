@@ -1,0 +1,33 @@
+<section class="seccion_formulario">
+  <article class="card">
+    <form action="{% url 'listar_salarios' %}" method="get">
+      <div class="form-group">
+        <label for="id_puesto">ID del Puesto</label>
+        <input type="text" class="form-control" id="id_puesto" name="id_puesto" required>
+      </div>
+      <div class="form-group">
+        <label for="nombre_puesto">Nombre del Puesto</label>
+        <input type="text" class="form-control" id="nombre_puesto" name="nombre_puesto" required>
+      </div>
+      <button type="submit">Buscar</button>
+    </form>
+  </article>
+</section>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Valor Bruto Año</th>
+      <th>Extra Junio</th>
+      <th>Extra Diciembre</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for salario in salarios %}
+    <tr>
+      <td>{{ salario.valor_bruto_año }}</td>
+      <td>{{ salario.extra_junio }}</td>
+      <td>{{ salario.extra_diciembre }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
