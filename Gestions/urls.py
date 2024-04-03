@@ -37,7 +37,10 @@ urlpatterns = [
     path('eliminar_salario/', views.eliminar_salario, name="eliminar_salario"),
     path('eliminar_puesto/', views.eliminar_puesto, name="eliminar_puesto"),
     path('eliminar_empleado/', views.eliminar_empleado, name="eliminar_empleado"),
+    path('accion_eliminar_empleado/', views.accion_eliminar_empleado, name="accion_eliminar_empleado"),
+    # accion_recuperar_empleado
     path('eliminar_pais/', views.eliminar_pais, name="eliminar_pais"),
+    path('accion_eliminar_pais/', views.accion_eliminar_pais, name="accion_eliminar_pais"),
     path('save_poblacion/', views.save_poblacion, name="save_poblacion"),
     path('save_fabrica/', views.save_fabrica, name="save_fabrica"),
     path('save_salario/', views.save_salario, name="save_salario"),

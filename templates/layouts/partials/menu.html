@@ -1,22 +1,32 @@
 <nav>
   <ul>
     <li>
-      <a href="{% url " registrar_pais" %}">País</a>
+      <a href="{% url  'registrar_pais' %}">País</a>
     </li>
     <li>
-      <a href="{% url " registrar_poblacion" %}">Población</a>
+      <a href="{% url  'accion_eliminar_pais' %}">País eliminar</a>
     </li>
     <li>
-      <a href="{% url " registrar_fabrica" %}">Fábrica</a>
+      <a href="{% url  'accion_eliminar_empleado' %}">Empleado eliminar</a>
     </li>
     <li>
-      <a href="{% url " registrar_salario" %}">Salario</a>
+      <a href="{% url  'recuperar_empleado' %}">Recuperar Empleado</a>
+    </li>
+
+    <li>
+      <a href="{% url  'registrar_poblacion' %}">Población</a>
     </li>
     <li>
-      <a href="{% url " registrar_puesto" %}">Puesto</a>
+      <a href="{% url  'registrar_fabrica' %}">Fábrica</a>
     </li>
     <li>
-      <a href="{% url " tabla_empleado" %}">Empleado</a>
+      <a href="{% url  'registrar_salario' %}">Salario</a>
+    </li>
+    <li>
+      <a href="{% url  'registrar_puesto' %}">Puesto</a>
+    </li>
+    <li>
+      <a href="{% url  'tabla_empleado' %}">Empleado</a>
     </li>
   </ul>
 </nav>
